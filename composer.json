@@ -1,0 +1,193 @@
+{
+    "name": "techopsph/opigno3-pantheon",
+    "description": "Opigno LMS 3 for Pantheon",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [],
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        "1": {
+            "type": "path",
+            "url": "upstream-configuration"
+        },
+        "asset-packagist": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        "enyo/dropzone": {
+            "type": "package",
+            "package": {
+                "name": "enyo/dropzone",
+                "version": "v5.5.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/dropzone/dropzone/archive/refs/tags/v5.5.0.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "mozilla/pdf.js": {
+            "type": "package",
+            "package": {
+                "name": "mozilla/pdf.js",
+                "version": "v2.4.456",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/mozilla/pdf.js/releases/download/v2.4.456/pdfjs-2.4.456-es5-dist.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "kenwheeler/slick": {
+            "type": "package",
+            "package": {
+                "name": "kenwheeler/slick",
+                "version": "1.8.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/kenwheeler/slick/archive/v1.8.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "furf/jquery-ui-touch-punch": {
+            "type": "package",
+            "package": {
+                "name": "furf/jquery-ui-touch-punch",
+                "version": "master",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/furf/jquery-ui-touch-punch/archive/refs/heads/master.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "almende/vis": {
+            "type": "package",
+            "package": {
+                "name": "almende/vis",
+                "version": "v4.21.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/almende/vis/archive/refs/tags/v4.21.0.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    },
+    "require": {
+        "pantheon-upstreams/upstream-configuration": "dev-main",
+        "wikimedia/composer-merge-plugin": "2.0",
+        "composer/installers": "v1.12.0",
+        "cweagans/composer-patches": "1.7.1",
+        "drupal/core-composer-scaffold": "~9.3.0",
+        "opigno/opigno_lms": "^3.0.0",
+        "drush/drush": "^11 || ^12"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^9.2",
+        "drush/drush": "^10",
+        "drupal/console": "~1.0"
+    },
+    "replace": {
+        "h5p/h5p-core": "*",
+        "h5p/h5p-editor": "*"
+    },
+    "config": {
+        "sort-packages": false,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "platform": {
+            "php": "7.4"
+        },
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "wikimedia/composer-merge-plugin": true,
+            "drupal/console-extend-plugin": true,
+            "topfloor/composer-cleanup-vcs-dirs": true
+        }
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "web/libraries/ckeditor": [
+                "type:drupal-library-ckeditor"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ],
+            "web/private/scripts/quicksilver/{$name}/": [
+                "type:quicksilver-script"
+            ]
+        },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            },
+            "allowed-packages": [
+                "pantheon-systems/drupal-integrations"
+            ],
+            "file-mapping": {
+                "[project-root]/.editorconfig": false,
+                "[project-root]/pantheon.upstream.yml": false,
+                "[project-root]/.gitattributes": false
+            }
+        },
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": false,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        }
+    },
+    "autoload": {
+        "classmap": [
+            "upstream-configuration/scripts/ComposerScripts.php"
+        ]
+    },
+    "scripts": {
+        "pre-update-cmd": [
+            "DrupalComposerManaged\\ComposerScripts::preUpdate"
+        ],
+        "upstream-require": [
+            "DrupalComposerManaged\\ComposerScripts::upstreamRequire"
+        ]
+    },
+    "scripts-descriptions": {
+        "upstream-require": "Add a dependency to an upstream. See https://pantheon.io/docs/create-custom-upstream for information on creating custom upstreams."
+    }
+}
