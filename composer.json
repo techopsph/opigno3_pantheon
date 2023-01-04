@@ -189,5 +189,15 @@
     },
     "scripts-descriptions": {
         "upstream-require": "Add a dependency to an upstream. See https://pantheon.io/docs/create-custom-upstream for information on creating custom upstreams."
+    },
+    "patches": {
+        "drupal/h5p": {
+             
+            "php8 compatible": "https://www.drupal.org/files/issues/2022-06-27/Update_H5P-editor_PHP8_compatible_3260094_2.patch"
+         },
+         "h5p/h5p-editor": {
+            "Fix whitelist check to be case insensitive": "https://github.com/h5p/h5p-editor-php-library/commit/bd871a3181f3e4a343351ae6a22d773a74d928b7.diff",
+            "Fix PHP 8 deprecation issue": "https://github.com/h5p/h5p-editor-php-library/commit/2edfd9b9e72d20e3b61f17a6836da21edb370624.diff"
+        }
     }
 }
