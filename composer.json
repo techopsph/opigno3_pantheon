@@ -9,7 +9,7 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-        "1": {
+        "pantheon-upstreams": {
             "type": "path",
             "url": "upstream-configuration"
         },
@@ -80,12 +80,14 @@
     },
     "require": {
         "pantheon-upstreams/upstream-configuration": "dev-main",
+        "composer/installers": "*",
+        "drupal/core-composer-scaffold": "^9.4.0",
+        "drupal/core-recommended": "^9.2",
+        "pantheon-systems/drupal-integrations": "^9",
+        "cweagans/composer-patches": "^1.7",
+        "drush/drush": "^11 || ^12",
         "wikimedia/composer-merge-plugin": "2.0",
-        "composer/installers": "v1.12.0",
-        "cweagans/composer-patches": "1.7.1",
-        "drupal/core-composer-scaffold": "~9.3.0",
-        "opigno/opigno_lms": "^3.0.0",
-        "drush/drush": "^10 || ^11 || ^12"
+        "opigno/opigno_lms": "~3.0.9"
     },
     "require-dev": {
         "drupal/core-dev": "^9.2",
@@ -101,9 +103,6 @@
         "preferred-install": {
             "*": "dist"
         },
-        "platform": {
-            "php": "7.4"
-        },
         "allow-plugins": {
             "composer/installers": true,
             "cweagans/composer-patches": true,
@@ -111,7 +110,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "wikimedia/composer-merge-plugin": true,
             "drupal/console-extend-plugin": true,
-            "topfloor/composer-cleanup-vcs-dirs": true
+            "topfloor/composer-cleanup-vcs-dirs": true,
+            "zaporylie/composer-drupal-optimizations": true
         }
     },
     "conflict": {
