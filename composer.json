@@ -85,7 +85,7 @@
         "drupal/core-recommended": "^9.2",
         "pantheon-systems/drupal-integrations": "^9",
         "cweagans/composer-patches": "^1.7",
-        "drush/drush": "^11 || ^12",
+        "drush/drush": "^10 || ^11 || ^12",
         "wikimedia/composer-merge-plugin": "2.0",
         "opigno/opigno_lms": "~3.0.9"
     },
