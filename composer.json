@@ -80,19 +80,18 @@
     },
     "require": {
         "pantheon-upstreams/upstream-configuration": "dev-main",
-        "composer/installers": "*",
-        "drupal/core-composer-scaffold": "^9.4.0",
-        "drupal/core-recommended": "^9.2",
-        "pantheon-systems/drupal-integrations": "^9",
-        "cweagans/composer-patches": "^1.7",
-        "drush/drush": "^10 || ^11 || ^12",
         "wikimedia/composer-merge-plugin": "2.0",
-        "opigno/opigno_lms": "~3.1.0"
+        "composer/installers": "*",
+        "drupal/core-composer-scaffold": "^10",
+        "drupal/core-recommended": "^10",
+        "pantheon-systems/drupal-integrations": "^10",
+        "cweagans/composer-patches": "^1.7",
+        "drush/drush": "^11 || ^12",
+        "opigno/opigno_lms": "~3.2.0"
     },
     "require-dev": {
-        "drupal/core-dev": "^9.2",
-        "drush/drush": "^10",
-        "drupal/console": "~1.0"
+        "drupal/core-dev": "^10",
+        "mglaman/composer-drupal-lenient": "^1.0"
     },
     "replace": {
         "h5p/h5p-core": "*",
@@ -172,16 +171,6 @@
         "composer-exit-on-patch-failure": false,
         "patchLevel": {
             "drupal/core": "-p2"
-        },
-        "patches": {
-            "drupal/h5p": {
-                 
-                "php8 compatible": "https://www.drupal.org/files/issues/2022-06-27/Update_H5P-editor_PHP8_compatible_3260094_2.patch"
-             },
-             "h5p/h5p-editor": {
-                "Fix whitelist check to be case insensitive": "https://github.com/h5p/h5p-editor-php-library/commit/bd871a3181f3e4a343351ae6a22d773a74d928b7.diff",
-                "Fix PHP 8 deprecation issue": "https://github.com/h5p/h5p-editor-php-library/commit/2edfd9b9e72d20e3b61f17a6836da21edb370624.diff"
-            }
         }
     },
     "autoload": {
@@ -192,6 +181,9 @@
     "scripts": {
         "pre-update-cmd": [
             "DrupalComposerManaged\\ComposerScripts::preUpdate"
+        ],
+        "post-update-cmd": [
+            "DrupalComposerManaged\\ComposerScripts::postUpdate"
         ],
         "upstream-require": [
             "DrupalComposerManaged\\ComposerScripts::upstreamRequire"
